@@ -2,7 +2,10 @@ import common from "../copyText";
 
 const copyText = {
   ...common,
-  newIssueButtonLabel: "New Issue",
+  createNewIssueFormTitle: "Create New Issue",
+  buttonLabelNewIssue: "New Issue",
+  placeholder_description: "Description",
+  placeholder_title: "Title...",
 };
 
 export default copyText;

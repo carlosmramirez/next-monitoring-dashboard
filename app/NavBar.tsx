@@ -17,8 +17,8 @@ const NavBar = () => {
   const currentPath = usePathname();
 
   const links: Link[] = [
-    { href: paths.dashboard, label: copyText.navBar_dashboard },
-    { href: paths.issues, label: copyText.navBar_issues },
+    { href: paths.dashboard, label: copyText.navBarLabelDashboard },
+    { href: paths.issues, label: copyText.navBarLabelIssues },
   ];
 
   return (

@@ -1,6 +1,7 @@
 const paths = {
-  dashboard: '/',
-  issues: '/issues'
-}
+  dashboard: "/",
+  issues: "/issues",
+  newIssue: "/issues/new",
+};
 
-export default paths
+export default paths;

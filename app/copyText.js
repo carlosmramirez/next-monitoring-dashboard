@@ -1,6 +1,7 @@
 const copyText = {
-  navBar_dashboard: "Dashboard",
-  navBar_issues: "Issues",
-}
+  buttonLabelSubmit: "Submit",
+  navBarLabelDashboard: "Dashboard",
+  navBarLabelIssues: "Issues",
+};
 
-export default copyText
+export default copyText;

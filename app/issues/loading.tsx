@@ -1,8 +1,6 @@
 import { Table } from "@radix-ui/themes";
-import React from "react";
+import Skeleton from "../components/Skeleton";
 import copyText from "./copyText";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import IssueTableControls from "./IssueTableControls";
 
 const LoadingIssuesPage = () => {

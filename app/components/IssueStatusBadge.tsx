@@ -1,6 +1,5 @@
 import { Status } from "@prisma/client";
 import { Badge } from "@radix-ui/themes";
-import React from "react";
 import copyText from "../copyText";
 
 interface Props {
@@ -11,7 +10,7 @@ const statusMap: Record<
   Status,
   { color: "green" | "red" | "violet"; label: string }
 > = {
-  [Status.CLOSED]: { color: "green", label: copyText.buttonLabelSubmit },
+  [Status.CLOSED]: { color: "green", label: copyText.issuesTableStatus_CLOSED },
   [Status.IN_PROGRESS]: {
     color: "violet",
     label: copyText.issuesTableStatus_IN_PROGRESS,

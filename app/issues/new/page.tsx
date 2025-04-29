@@ -1,19 +1,23 @@
 "use client";
 
-import { Button, Callout, Text, TextField } from "@radix-ui/themes";
-import { useForm, Controller } from "react-hook-form";
-import axios, { AxiosError } from "axios";
-import SimpleMDE from "react-simplemde-editor";
-import copyText from "../copyText";
-import "easymde/dist/easymde.min.css";
-import paths from "@/app/paths";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { createIssueSchema } from "@/app/validationSchemas";
-import { z } from "zod";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
+import paths from "@/app/paths";
+import { createIssueSchema } from "@/app/validationSchemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, Callout, Text, TextField } from "@radix-ui/themes";
+import axios from "axios";
+import "easymde/dist/easymde.min.css";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
+import { z } from "zod";
+import copyText from "../copyText";
+
+const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
+  ssr: false,
+});
 
 type CreateIssueForm = z.infer<typeof createIssueSchema>;
 
@@ -38,16 +42,14 @@ const NewIssuePage = () => {
   // Handlers
   //
 
-  function onSubmit(): void {
-    handleSubmit(async (data) => {
-      try {
-        await axios.post("/api/issues", data);
-        router.push(paths.issues);
-      } catch (error) {
-        setError(copyText.createNewIssueFormErrorMessage);
-      }
-    });
-  }
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      await axios.post("/api/issues", data);
+      router.push(paths.issues);
+    } catch (error) {
+      setError(copyText.createNewIssueFormErrorMessage);
+    }
+  });
 
   return (
     <div className="max-w-xl">

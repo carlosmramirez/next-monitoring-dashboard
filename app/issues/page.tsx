@@ -4,6 +4,8 @@ import copyText from "./copyText";
 import Link from "next/link";
 import paths from "../paths";
 import prisma from "@/prisma/client";
+import { Status } from "@prisma/client";
+import IssueStatusBadge from "../components/IssueStatusBadge";
 
 const IssuesPage = async () => {
   const issues = await prisma.issue.findMany();
@@ -35,11 +37,11 @@ const IssuesPage = async () => {
               <Table.Cell>
                 {issue.title}
                 <div className="block md:hidden">
-                  {getStatusCopyText(issue.status)}
+                  <IssueStatusBadge status={issue.status} />
                 </div>
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
-                {getStatusCopyText(issue.status)}
+                <IssueStatusBadge status={issue.status} />
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
                 {issue.createdAt.toDateString()}
@@ -51,22 +53,5 @@ const IssuesPage = async () => {
     </>
   );
 };
-
-function getStatusCopyText(val: string): string {
-  switch (val) {
-    case "CLOSED": {
-      return copyText.issuesTableStatus_CLOSED;
-    }
-    case "IN_PROGRESS": {
-      return copyText.issuesTableStatus_OPEN;
-    }
-    case "OPEN": {
-      return copyText.issuesTableStatus_OPEN;
-    }
-    default: {
-      return "";
-    }
-  }
-}
 
 export default IssuesPage;

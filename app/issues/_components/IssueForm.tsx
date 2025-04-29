@@ -3,7 +3,7 @@
 import ErrorMessage from "@/app/_components/ErrorMessage";
 import Spinner from "@/app/_components/Spinner";
 import paths from "@/app/paths";
-import { createIssueSchema } from "@/app/validationSchemas";
+import { issueSchema } from "@/app/validationSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Issue } from "@prisma/client";
 import { Box, Button, Callout, Text, TextField } from "@radix-ui/themes";
@@ -20,7 +20,7 @@ const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
 });
 
-type IssueFormData = z.infer<typeof createIssueSchema>;
+type IssueFormData = z.infer<typeof issueSchema>;
 
 const IssueForm = ({ issue }: { issue?: Issue }) => {
   const router = useRouter();
@@ -35,7 +35,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
     handleSubmit,
     register,
   } = useForm<IssueFormData>({
-    resolver: zodResolver(createIssueSchema),
+    resolver: zodResolver(issueSchema),
   });
   const [error, setError] = useState<string>();
 
@@ -45,12 +45,26 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      await axios.post("/api/issues", data);
+      if (issue) {
+        await axios.patch(`/api/issues/${issue.id}`, data);
+      } else {
+        await axios.post("/api/issues", data);
+      }
+
       router.push(paths.issues);
+      router.refresh();
     } catch (error) {
       setError(copyText.createNewIssueFormErrorMessage);
     }
   });
+
+  //
+  // Render
+  //
+
+  const submitButtonLabel = issue
+    ? copyText.buttonLabelUpdateIssue
+    : copyText.buttonLabelSubmitNewIssue;
 
   return (
     <Box className="max-w-xl">
@@ -75,7 +89,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
             {...register("title")}
           />
         </TextField.Root>
-        <ErrorMessage children={errors.title?.message} />
+        <ErrorMessage>{errors.title?.message} </ErrorMessage>
         <Controller
           control={control}
           defaultValue={issue?.description}
@@ -87,10 +101,12 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
             />
           )}
         />
-        <ErrorMessage children={errors.description?.message} />
-        <Button className="w-20" disabled={!isValid || isSubmitting}>
-          {isSubmitting ? <Spinner /> : copyText.buttonLabelSubmit}
-        </Button>
+        <ErrorMessage>{errors.description?.message}</ErrorMessage>
+        <Box className="w-32">
+          <Button className="w-full" disabled={!isValid || isSubmitting}>
+            {isSubmitting ? <Spinner /> : submitButtonLabel}
+          </Button>
+        </Box>
       </form>
     </Box>
   );

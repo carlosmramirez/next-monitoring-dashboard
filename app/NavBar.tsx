@@ -23,7 +23,7 @@ const NavBar = () => {
   return (
     <nav className="flex border-b h-14 items-center mb-5 px-5 space-x-6">
       {/* Logo */}
-      <Link children={<MdOutlineSkateboarding />} href={paths.dashboard} />
+      <Link href={paths.dashboard}>{<MdOutlineSkateboarding />}</Link>
 
       {/* Nav Items */}
       <ul className="flex space-x-6">

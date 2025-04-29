@@ -2,7 +2,7 @@
 
 import { Box, Table } from "@radix-ui/themes";
 import { usePathname } from "next/navigation";
-import Skeleton from "../components/Skeleton";
+import Skeleton from "../_components/Skeleton";
 import copyText from "./copyText";
 import IssueTableControls from "./IssueTableControls";
 

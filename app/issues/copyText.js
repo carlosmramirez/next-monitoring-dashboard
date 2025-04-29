@@ -5,6 +5,8 @@ const copyText = {
   createNewIssueFormTitle: "Create New Issue",
   createNewIssueFormErrorMessage:
     "An unexpected error occured, please try again...",
+  editIssueButtonLabel: "Edit Issue",
+  editIssueFormTitle: "Edit Issue",
   issuesTableColumnHeader_created: "Created",
   issuesTableColumnHeader_issue: "Issue",
   issuesTableColumnHeader_status: "Status",

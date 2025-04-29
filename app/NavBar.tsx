@@ -1,12 +1,11 @@
 "use client";
 
+import classnames from "classnames";
 import Link from "next/link";
-import React from "react";
-import copyText from "./copyText";
-import paths from "./paths";
 import { usePathname } from "next/navigation";
 import { MdOutlineSkateboarding } from "react-icons/md";
-import classnames from "classnames";
+import copyText from "./copyText";
+import paths from "./paths";
 
 type Link = {
   href: string;
@@ -29,19 +28,19 @@ const NavBar = () => {
       {/* Nav Items */}
       <ul className="flex space-x-6">
         {links.map((link) => (
-          <Link
-            key={link.href}
-            className={classnames({
-              "text-black": link.href === currentPath,
-              "text-gray-500": link.href !== currentPath,
-              "hover:text-black transition-colors": true,
-            })}
-            href={link.href}
-          >
-            {link.label}
-          </Link>
+          <li key={link.href}>
+            <Link
+              className={classnames({
+                "text-black": link.href === currentPath,
+                "text-gray-500": link.href !== currentPath,
+                "hover:text-black transition-colors": true,
+              })}
+              href={link.href}
+            >
+              {link.label}
+            </Link>
+          </li>
         ))}
-        <li></li>
       </ul>
     </nav>
   );

@@ -1,9 +1,18 @@
-import { Table } from "@radix-ui/themes";
+"use client";
+
+import { Box, Table } from "@radix-ui/themes";
+import { usePathname } from "next/navigation";
 import Skeleton from "../components/Skeleton";
 import copyText from "./copyText";
 import IssueTableControls from "./IssueTableControls";
 
 const LoadingIssuesPage = () => {
+  const pathname = usePathname();
+
+  const isNestedRoute = pathname.split("/").length > 2;
+
+  if (isNestedRoute) return null;
+
   const issues = [1, 2, 3, 4, 5];
 
   return (
@@ -28,9 +37,9 @@ const LoadingIssuesPage = () => {
             <Table.Row key={issue}>
               <Table.Cell>
                 <Skeleton />
-                <div className="block md:hidden">
+                <Box className="block md:hidden">
                   <Skeleton />
-                </div>
+                </Box>
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
                 <Skeleton />

@@ -1,4 +1,5 @@
 const copyText = {
+  buttonLabelNewIssue: "New Issue",
   buttonLabelSubmit: "Submit",
   issuesTableStatus_CLOSED: "Closed",
   issuesTableStatus_IN_PROGRESS: "In Progress",

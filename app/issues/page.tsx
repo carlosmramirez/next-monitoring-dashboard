@@ -24,6 +24,9 @@ const IssuesPage = async () => {
             <Table.ColumnHeaderCell className="hidden md:table-cell">
               {copyText.issuesTableColumnHeader_created}
             </Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="hidden md:table-cell">
+              {copyText.issuesTableColumnHeader_updatedAt}
+            </Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -40,6 +43,9 @@ const IssuesPage = async () => {
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
                 {issue.createdAt.toDateString()}
+              </Table.Cell>
+              <Table.Cell className="hidden md:table-cell">
+                {issue.updatedAt.toDateString()}
               </Table.Cell>
             </Table.Row>
           ))}

@@ -10,6 +10,7 @@ const copyText = {
   issuesTableColumnHeader_created: "Created",
   issuesTableColumnHeader_issue: "Issue",
   issuesTableColumnHeader_status: "Status",
+  issuesTableColumnHeader_updatedAt: "Updated At",
   placeholder_description: "Description",
   placeholder_title: "Title...",
 };

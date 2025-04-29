@@ -24,11 +24,30 @@ const NewIssuePage = () => {
   // Hooks
   //
 
-  const { control, formState, handleSubmit, register } =
-    useForm<CreateIssueForm>({
-      resolver: zodResolver(createIssueSchema),
-    });
+  const {
+    control,
+    formState: { errors, isSubmitting, isValid },
+    handleSubmit,
+    register,
+  } = useForm<CreateIssueForm>({
+    resolver: zodResolver(createIssueSchema),
+  });
   const [error, setError] = useState<string>();
+
+  //
+  // Handlers
+  //
+
+  function onSubmit(): void {
+    handleSubmit(async (data) => {
+      try {
+        await axios.post("/api/issues", data);
+        router.push(paths.issues);
+      } catch (error) {
+        setError(copyText.createNewIssueFormErrorMessage);
+      }
+    });
+  }
 
   return (
     <div className="max-w-xl">
@@ -40,17 +59,7 @@ const NewIssuePage = () => {
           </div>
         </Callout.Root>
       )}
-      <form
-        className="space-y-3"
-        onSubmit={handleSubmit(async (data) => {
-          try {
-            await axios.post("/api/issues", data);
-            router.push(paths.issues);
-          } catch (error) {
-            setError(copyText.createNewIssueFormErrorMessage);
-          }
-        })}
-      >
+      <form className="space-y-3" onSubmit={onSubmit}>
         <Text size="5" weight="bold">
           {copyText.createNewIssueFormTitle}
         </Text>
@@ -60,7 +69,7 @@ const NewIssuePage = () => {
             {...register("title")}
           />
         </TextField.Root>
-        <ErrorMessage children={formState.errors.title?.message} />
+        <ErrorMessage children={errors.title?.message} />
         <Controller
           name="description"
           control={control}
@@ -71,9 +80,9 @@ const NewIssuePage = () => {
             />
           )}
         />
-        <ErrorMessage children={formState.errors.description?.message} />
-        <Button className="w-20" disabled={!formState.isValid}>
-          {formState.isSubmitting ? <Spinner /> : copyText.buttonLabelSubmit}
+        <ErrorMessage children={errors.description?.message} />
+        <Button className="w-20" disabled={!isValid || isSubmitting}>
+          {isSubmitting ? <Spinner /> : copyText.buttonLabelSubmit}
         </Button>
       </form>
     </div>

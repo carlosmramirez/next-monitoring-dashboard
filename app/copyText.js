@@ -1,4 +1,6 @@
 const copyText = {
+  buttonLabelSignIn: "Sign In",
+  buttonLabelSignOut: "Sign Out",
   buttonLabelNewIssue: "New Issue",
   buttonLabelSubmitNewIssue: "Submit Issue",
   buttonLabelUpdateIssue: "Update Issue",

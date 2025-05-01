@@ -6,8 +6,12 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdOutlineSkateboarding } from "react-icons/md";
+import Skeleton from "./_components/Skeleton";
 import copyText from "./copyText";
 import paths from "./paths";
+
+const STATUS_LOADING = "loading";
+const STATUS_UNAUTHENTICATED = "unauthenticated";
 
 type Link = {
   href: string;
@@ -34,14 +38,16 @@ const NavBar = () => {
 const AuthActionMenu = () => {
   const { data: session, status } = useSession();
 
-  if (status === "loading") {
-    return null;
+  if (status === STATUS_LOADING) {
+    return <Skeleton circle={true} height="1.75rem" width="2rem" />;
   }
 
-  if (status === "unauthenticated") {
+  if (status === STATUS_UNAUTHENTICATED) {
     return (
-      <Link className="nav-link" href="api/auth/signin">
-        {copyText.buttonLabelSignIn}
+      <Link className="nav-link h-8" href={paths.signIn}>
+        <Flex align="center" height="100%">
+          {copyText.buttonLabelSignIn}
+        </Flex>
       </Link>
     );
   }
@@ -62,7 +68,7 @@ const AuthActionMenu = () => {
           </DropdownMenu.Trigger>
           <DropdownMenu.Content>
             <DropdownMenu.Label>{session.user.email}</DropdownMenu.Label>
-            <Link href="/api/auth/signout">
+            <Link href={paths.singOut}>
               <DropdownMenu.Item className="cursor-pointer">
                 <Flex justify="center" width="100%">
                   {copyText.buttonLabelSignOut}

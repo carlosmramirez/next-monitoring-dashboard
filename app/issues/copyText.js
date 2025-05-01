@@ -22,6 +22,8 @@ const copyText = {
   issuesTableColumnHeader_updatedAt: "Updated At",
   placeholder_description: "Description",
   placeholder_title: "Title...",
+  selectAssigneeLabel: "Suggested Users",
+  selectAssigneePlaceHolder: "Select Assignee...",
 };
 
 export default copyText;

@@ -6,7 +6,7 @@ import copyText from "../../copyText";
 
 const EditIssueButton = ({ issueID }: { issueID: number }) => {
   return (
-    <Link href={`${paths.issues}/${issueID}/edit`}>
+    <Link href={`${paths.editIssue.replace(":issueID", issueID.toString())}`}>
       <Button className="w-full">
         <Text>{copyText.editIssueButtonLabel}</Text>
         <FaEdit />

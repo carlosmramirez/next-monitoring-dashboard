@@ -3,7 +3,7 @@
 import ErrorMessage from "@/app/_components/ErrorMessage";
 import Spinner from "@/app/_components/Spinner";
 import paths from "@/app/paths";
-import { issueSchema } from "@/app/validationSchemas";
+import { createIssueSchema } from "@/app/validationSchemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Issue } from "@prisma/client";
 import { Box, Button, Callout, Text, TextField } from "@radix-ui/themes";
@@ -16,7 +16,7 @@ import SimpleMDE from "react-simplemde-editor";
 import { z } from "zod";
 import copyText from "../copyText";
 
-type IssueFormData = z.infer<typeof issueSchema>;
+type IssueFormData = z.infer<typeof createIssueSchema>;
 
 const IssueForm = ({ issue }: { issue?: Issue }) => {
   const router = useRouter();
@@ -31,7 +31,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
     handleSubmit,
     register,
   } = useForm<IssueFormData>({
-    resolver: zodResolver(issueSchema),
+    resolver: zodResolver(createIssueSchema),
   });
   const [error, setError] = useState<string>();
 

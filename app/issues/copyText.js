@@ -22,8 +22,12 @@ const copyText = {
   issuesTableColumnHeader_updatedAt: "Updated At",
   placeholder_description: "Description",
   placeholder_title: "Title...",
+  selectAssigneeErrorMessage:
+    "There was an error assigning the user. Please try again later",
   selectAssigneeLabel: "Suggested Users",
+  selectAssigneeNoUsers: "No users...",
   selectAssigneePlaceHolder: "Select Assignee...",
+  selectAssigneeUnassigned: "Unassigned",
 };
 
 export default copyText;

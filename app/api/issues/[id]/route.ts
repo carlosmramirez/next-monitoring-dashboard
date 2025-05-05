@@ -1,5 +1,5 @@
 import authOptions from "@/app/auth/authOptions";
-import { issueSchema } from "@/app/validationSchemas";
+import { updateIssueSchema } from "@/app/validationSchemas";
 import prisma from "@/prisma/client";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
@@ -19,7 +19,7 @@ export async function DELETE(
   });
 
   if (!issue) {
-    return NextResponse.json({ error: "Invalid Issue" }, { status: 404 });
+    return NextResponse.json({ error: ISSUE_NOT_FOUND }, { status: 404 });
   }
 
   const deletedIssue = await prisma.issue.delete({
@@ -40,10 +40,20 @@ export async function PATCH(
   }
 
   const body = await request.json();
-  const validation = issueSchema.safeParse(body);
+  const validation = updateIssueSchema.safeParse(body);
 
   if (!validation.success) {
     return NextResponse.json(validation.error.format(), { status: 400 });
+  }
+
+  if (body.assigneeUserID) {
+    const user = await prisma.user.findUnique({
+      where: { id: body.assigneeUserID },
+    });
+
+    if (!user) {
+      return NextResponse.json({ error: USER_NOT_FOUND }, { status: 400 });
+    }
   }
 
   const issue = await prisma.issue.findUnique({
@@ -51,12 +61,13 @@ export async function PATCH(
   });
 
   if (!issue) {
-    return NextResponse.json({ error: "Invalid Issue" }, { status: 404 });
+    return NextResponse.json({ error: ISSUE_NOT_FOUND }, { status: 404 });
   }
 
   const updatedIssue = await prisma.issue.update({
     where: { id: issue.id },
     data: {
+      assigneeUserID: body.assigneeUserID,
       description: body.description,
       title: body.title,
     },
@@ -64,3 +75,6 @@ export async function PATCH(
 
   return NextResponse.json(updatedIssue);
 }
+
+const ISSUE_NOT_FOUND = "ISSUE_NOT_FOUND";
+const USER_NOT_FOUND = "USER_NOT_FOUND";

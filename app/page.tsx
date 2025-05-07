@@ -6,7 +6,7 @@ import IssueChart from "./IssueChart";
 import IssueMeters from "./IssueMeters";
 import LatestIssues from "./LatestIssues";
 
-export default async function Home() {
+const Home = async () => {
   const [closed, inProgress, open] = await prisma.$transaction([
     prisma.issue.count({ where: { status: Status.CLOSED } }),
     prisma.issue.count({
@@ -24,10 +24,14 @@ export default async function Home() {
       <LatestIssues />
     </Grid>
   );
-}
+};
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Monitoring Dashboard - Home",
   description:
     "View the quantity of Open, In Progress, and Closed issues that were reported to the system. A user can view the most recent issues as well as drill down into a certain issue or status to further investigate.",
 };
+
+export default Home;

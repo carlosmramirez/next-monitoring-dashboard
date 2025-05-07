@@ -1,33 +1,38 @@
-***THIS PROJECT IS IN PROGRESS! Please reach out to me if you have any questions!!!***
+***Check out the deployed project with the link below!***
 
-Technologies: React, TypeScript, Next.js, Prisma, MySQL, NextAuth.js, Radix-UI, Tailwind CSS
+https://next-monitoring-dashboard.vercel.app/
 
-TO IMPLEMENT:
-* Dashboard
-* AuthFlow
-* Surface Users
-* Change issue status
-* Production Database
+Technologies: React, TypeScript, Next.js, Prisma, MySQL, NextAuth.js, GoogleAuth, Radix-UI, Tailwind CSS, Sentry, ReactQuery
 
-## Screenshots of current progress
+## Screenshots of production application
+
+### **Homepage/Dashboard**
+![Screen Shot 2025-05-07 at 1 15 53 PM](https://github.com/user-attachments/assets/0ebbde20-7635-440f-a0b8-73494934219b)
 
 ### **Issue List View**
-<img width="1401" alt="Screen Shot 2025-04-29 at 9 11 42 PM" src="https://github.com/user-attachments/assets/e97c573e-9e1d-4012-8508-c40179c31a9d" /> 
+![Screen Shot 2025-05-07 at 1 16 46 PM](https://github.com/user-attachments/assets/5bd195e7-9707-498a-ba07-36ff62aa5fa0)
 
 ### **Create Issue Form**
-<img width="642" alt="Screen Shot 2025-04-29 at 9 07 20 PM" src="https://github.com/user-attachments/assets/21c3225b-fe0b-4e02-9f41-9c969e8b3e17" />
+![Screen Shot 2025-05-07 at 1 19 55 PM](https://github.com/user-attachments/assets/0ddc3ed6-014c-4fb7-9f37-9dd579c7cc1a)
 
 ### **Edit Issue Form**
-<img width="637" alt="Screen Shot 2025-04-29 at 9 09 01 PM" src="https://github.com/user-attachments/assets/17904cb3-831b-4f6b-aafb-ff2b1290ac63" />
+![Screen Shot 2025-05-07 at 1 20 42 PM](https://github.com/user-attachments/assets/1bb4228a-08da-4872-8a91-27387e91cb51)
 
 ### **Issue Details Page**
-<img width="867" alt="Screen Shot 2025-04-29 at 9 09 17 PM" src="https://github.com/user-attachments/assets/0fa6e227-b9d8-4995-988b-eeef76d091ec" />
+![Screen Shot 2025-05-07 at 1 20 17 PM](https://github.com/user-attachments/assets/abf7b108-3daa-4f08-9743-2059a603e6d6)
 
-
-
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Future Enhancements
+- Add drop down and CRUD to change issue status
+- Custom error toasts
+- Allow to sort by descending in issue table
+- Add search bar to issue table
+- Add loader to chart on home page
 
 ## Getting Started
 
-INSTRUCTIONS TO RUN LOCALLY TBD
+INSTRUCTIONS TO RUN LOCALLY: 
+  1. Clone the repo to your machine
+  2. Create an `.env` file using the example and populate the required variables.
+  3. Run `npm install`
+  4. Run `npx prisma migrate dev`
+  5. Run `npm run dev`

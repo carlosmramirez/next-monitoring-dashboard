@@ -2,12 +2,12 @@
 
 https://next-monitoring-dashboard.vercel.app/
 
-Technologies: React, TypeScript, Next.js, Prisma, MySQL, NextAuth.js, GoogleAuth, Radix-UI, Tailwind CSS, Sentry, ReactQuery
+Technologies: React, TypeScript, Next.js, Prisma, MySQL, NextAuth.js, GoogleAuth, Radix-UI, Tailwind CSS, Sentry, TanStack/React Query
 
 ## Screenshots of production application
 
 ### **Homepage/Dashboard**
-![Screen Shot 2025-05-07 at 1 15 53 PM](https://github.com/user-attachments/assets/0ebbde20-7635-440f-a0b8-73494934219b)
+![Screen Shot 2025-05-07 at 1 30 41 PM](https://github.com/user-attachments/assets/e6f9dbe1-c29e-4904-96e5-456012d0e5e7)
 
 ### **Issue List View**
 ![Screen Shot 2025-05-07 at 1 16 46 PM](https://github.com/user-attachments/assets/5bd195e7-9707-498a-ba07-36ff62aa5fa0)

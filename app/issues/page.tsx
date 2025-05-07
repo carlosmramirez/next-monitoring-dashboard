@@ -1,6 +1,7 @@
 import prisma from "@/prisma/client";
 import { Issue, Status } from "@prisma/client";
 import { Flex } from "@radix-ui/themes";
+import { Metadata } from "next";
 import Pagination from "../_components/Pagination";
 import IssueTable, { columnNames, IssuesQuery } from "./_components/IssueTable";
 import IssueTableControls from "./_components/IssueTableControls";
@@ -62,5 +63,11 @@ const isValidStatus = (val: Status): boolean => {
 };
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Monitoring Dashboard - Issues",
+  description:
+    "View all issues reported to the system. Drill down into specific issues to view their description, as well as update issue fields or assign a user to the issue",
+};
 
 export default IssuesPage;

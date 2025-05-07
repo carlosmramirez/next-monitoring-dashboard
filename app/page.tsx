@@ -1,6 +1,7 @@
 import prisma from "@/prisma/client";
 import { Status } from "@prisma/client";
 import { Flex, Grid } from "@radix-ui/themes";
+import { Metadata } from "next";
 import IssueChart from "./IssueChart";
 import IssueMeters from "./IssueMeters";
 import LatestIssues from "./LatestIssues";
@@ -24,3 +25,9 @@ export default async function Home() {
     </Grid>
   );
 }
+
+export const metadata: Metadata = {
+  title: "Monitoring Dashboard - Home",
+  description:
+    "View the quantity of Open, In Progress, and Closed issues that were reported to the system. A user can view the most recent issues as well as drill down into a certain issue or status to further investigate.",
+};

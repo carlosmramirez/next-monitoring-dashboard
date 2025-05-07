@@ -2,7 +2,9 @@
 
 https://next-monitoring-dashboard.vercel.app/
 
-Technologies: React, TypeScript, Next.js, Prisma, MySQL, NextAuth.js, GoogleAuth, Radix-UI, Tailwind CSS, Sentry, TanStack/React Query
+This application will allow a user to create and monitor issues for their application. This application was deployed with Vercel and the MySQL database was deployed with Aiven. Please let me know if you have any questions!
+
+Technologies: React, TypeScript, Next.js, Prisma, MySQL, NextAuth.js, Google OAuth 2.0, Radix-UI, Tailwind CSS, Sentry, TanStack/React Query
 
 ## Screenshots of production application
 
@@ -25,8 +27,11 @@ Technologies: React, TypeScript, Next.js, Prisma, MySQL, NextAuth.js, GoogleAuth
 - Add drop down and CRUD to change issue status
 - Custom error toasts
 - Allow to sort by descending in issue table
+- Default sortBy on issue table with createdAt column so new issues are seen first
 - Add search bar to issue table
 - Add loader to chart on home page
+- Add loader when creating an issue
+- Add createdBy/updatedBy column, so it is clear which user has created/updated an issue
 
 ## Getting Started
 

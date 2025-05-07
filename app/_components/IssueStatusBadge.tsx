@@ -1,5 +1,5 @@
 import { Status } from "@prisma/client";
-import { Badge } from "@radix-ui/themes";
+import { Badge, Flex } from "@radix-ui/themes";
 import copyText from "../copyText";
 
 interface Props {
@@ -20,7 +20,9 @@ const statusMap: Record<
 const IssueStatusBadge = (props: Props) => {
   return (
     <Badge color={statusMap[props.status].color} radius="medium">
-      {statusMap[props.status].label}
+      <Flex justify="center" width="9">
+        {statusMap[props.status].label}
+      </Flex>
     </Badge>
   );
 };

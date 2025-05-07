@@ -9,6 +9,7 @@ const copyText = {
   issuesTableStatus_OPEN: "Open",
   navBarLabelDashboard: "Dashboard",
   navBarLabelIssues: "Issues",
+  pageCountLabel: "Page",
 };
 
 export default copyText;

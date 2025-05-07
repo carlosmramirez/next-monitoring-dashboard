@@ -44,7 +44,9 @@ const IssueStatusFilter = () => {
       <Select.Content position="popper">
         <Select.Group>
           {statusFilterOptions.map((filter) => (
-            <Select.Item value={filter.status}>{filter.label}</Select.Item>
+            <Select.Item key={filter.label} value={filter.status}>
+              {filter.label}
+            </Select.Item>
           ))}
         </Select.Group>
       </Select.Content>

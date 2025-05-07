@@ -3,8 +3,8 @@
 import { Box, Table } from "@radix-ui/themes";
 import { usePathname } from "next/navigation";
 import Skeleton from "../_components/Skeleton";
+import IssueTableControls from "./_components/IssueTableControls";
 import copyText from "./copyText";
-import IssueTableControls from "./IssueTableControls";
 
 const LoadingIssuesPage = () => {
   const pathname = usePathname();
@@ -22,13 +22,13 @@ const LoadingIssuesPage = () => {
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeaderCell>
-              {copyText.issuesTableColumnHeader_issue}
+              {copyText.issueTableColumnHeader_issue}
             </Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell className="hidden md:table-cell">
-              {copyText.issuesTableColumnHeader_status}
+              {copyText.issueTableColumnHeader_status}
             </Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell className="hidden md:table-cell">
-              {copyText.issuesTableColumnHeader_created}
+              {copyText.issueTableColumnHeader_createdAt}
             </Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>

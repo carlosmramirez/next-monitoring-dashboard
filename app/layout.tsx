@@ -1,5 +1,6 @@
 import { Container, Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import AuthProvider from "./auth/AuthProvider";
@@ -26,6 +27,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={inter.className}>
+        <Analytics />
         <QueryClientProvider>
           <AuthProvider>
             <Theme>

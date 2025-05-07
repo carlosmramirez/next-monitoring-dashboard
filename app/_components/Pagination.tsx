@@ -25,7 +25,7 @@ const Pagination = ({ currentPage, itemCount, pageSize }: Props) => {
   const pageCount = Math.ceil(itemCount / pageSize);
 
   return (
-    <Flex align="center" justify="between" mt="3" px="3" width="100%">
+    <Flex align="center" justify="between" px="3" width="100%">
       <Flex gap="2">
         <Button
           color="indigo"

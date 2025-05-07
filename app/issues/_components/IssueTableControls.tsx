@@ -7,7 +7,7 @@ import IssueStatusFilter from "./IssueStatusFilter";
 
 const IssueTableControls = () => {
   return (
-    <Flex mb="5" justify="between">
+    <Flex justify="between">
       <IssueStatusFilter />
       <Button color="indigo">
         <Link href={paths.newIssue}>

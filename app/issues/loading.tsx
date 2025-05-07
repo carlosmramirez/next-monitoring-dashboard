@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Table } from "@radix-ui/themes";
+import { Box, Flex, Table } from "@radix-ui/themes";
 import { usePathname } from "next/navigation";
 import Skeleton from "../_components/Skeleton";
 import IssueTableControls from "./_components/IssueTableControls";
@@ -16,7 +16,7 @@ const LoadingIssuesPage = () => {
   const issues = [1, 2, 3, 4, 5];
 
   return (
-    <>
+    <Flex direction="column" gap="3">
       <IssueTableControls />
       <Table.Root variant="surface">
         <Table.Header>
@@ -51,7 +51,7 @@ const LoadingIssuesPage = () => {
           ))}
         </Table.Body>
       </Table.Root>
-    </>
+    </Flex>
   );
 };
 

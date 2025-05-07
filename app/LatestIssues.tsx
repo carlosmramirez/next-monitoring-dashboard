@@ -5,11 +5,13 @@ import Link from "./_components/Link";
 import copyText from "./copyText";
 import paths from "./paths";
 
+const TRUNCATE_CHAR_COUNT = 50;
+
 const LatestIssues = async () => {
   const issues = await prisma.issue.findMany({
     include: { assigneeUser: true },
     orderBy: { createdAt: "desc" },
-    take: 5,
+    take: 6,
   });
 
   return (
@@ -25,8 +27,8 @@ const LatestIssues = async () => {
                 <Flex align="center" justify="between">
                   <Flex direction="column" gap="2">
                     <Link href={`${paths.issues}/${issue.id}`}>
-                      {issue.title.length > 75
-                        ? issue.title.slice(0, 75) + "..."
+                      {issue.title.length > TRUNCATE_CHAR_COUNT
+                        ? issue.title.slice(0, TRUNCATE_CHAR_COUNT + 1) + "..."
                         : issue.title}
                     </Link>
                     <IssueStatusBadge status={issue.status} />

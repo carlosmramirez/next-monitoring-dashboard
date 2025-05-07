@@ -1,5 +1,5 @@
 import { Status } from "@prisma/client";
-import { Card, Flex, Text } from "@radix-ui/themes";
+import { Card, Flex, Grid, Text } from "@radix-ui/themes";
 import Link from "./_components/Link";
 import copyText from "./copyText";
 import paths from "./paths";
@@ -12,15 +12,15 @@ interface Props {
   open: number;
 }
 
-const IssueSummary = ({ closed, inProgress, open }: Props) => {
+const IssueMeters = ({ closed, inProgress, open }: Props) => {
   const cardOptions: CardOptions[] = [
     {
-      label: copyText.issueStatusBadge_CLOSED,
+      label: copyText.issueStatus_CLOSED,
       status: Status.CLOSED,
       value: closed,
     },
     {
-      label: copyText.issueStatusBadge_IN_PROGRESS,
+      label: copyText.issueStatus_IN_PROGRESS,
       status: Status.IN_PROGRESS,
       value: inProgress,
     },
@@ -28,9 +28,9 @@ const IssueSummary = ({ closed, inProgress, open }: Props) => {
   ];
 
   return (
-    <Flex gap="3">
+    <Grid columns="3" gap="3">
       {cardOptions.map((card) => (
-        <Card className="w-36" key={card.label}>
+        <Card key={card.label}>
           <Flex direction="column" gap="1">
             <Link href={`${paths.issues}?status=${card.status}`}>
               {card.label}
@@ -41,8 +41,8 @@ const IssueSummary = ({ closed, inProgress, open }: Props) => {
           </Flex>
         </Card>
       ))}
-    </Flex>
+    </Grid>
   );
 };
 
-export default IssueSummary;
+export default IssueMeters;

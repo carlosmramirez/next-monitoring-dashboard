@@ -10,10 +10,10 @@ const statusMap: Record<
   Status,
   { color: "green" | "red" | "violet"; label: string }
 > = {
-  [Status.CLOSED]: { color: "green", label: copyText.issueStatusBadge_CLOSED },
+  [Status.CLOSED]: { color: "green", label: copyText.issueStatus_CLOSED },
   [Status.IN_PROGRESS]: {
     color: "violet",
-    label: copyText.issueStatusBadge_IN_PROGRESS,
+    label: copyText.issueStatus_IN_PROGRESS,
   },
   [Status.OPEN]: { color: "red", label: copyText.issueStatus_OPEN },
 };

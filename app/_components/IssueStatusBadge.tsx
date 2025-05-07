@@ -10,19 +10,22 @@ const statusMap: Record<
   Status,
   { color: "green" | "red" | "violet"; label: string }
 > = {
-  [Status.CLOSED]: { color: "green", label: copyText.issuesTableStatus_CLOSED },
+  [Status.CLOSED]: { color: "green", label: copyText.issueStatusBadge_CLOSED },
   [Status.IN_PROGRESS]: {
     color: "violet",
-    label: copyText.issuesTableStatus_IN_PROGRESS,
+    label: copyText.issueStatusBadge_IN_PROGRESS,
   },
-  [Status.OPEN]: { color: "red", label: copyText.issuesTableStatus_OPEN },
+  [Status.OPEN]: { color: "red", label: copyText.issueStatus_OPEN },
 };
+
 const IssueStatusBadge = (props: Props) => {
   return (
-    <Badge color={statusMap[props.status].color} radius="medium">
-      <Flex justify="center" width="9">
-        {statusMap[props.status].label}
-      </Flex>
+    <Badge
+      className="justify-center w-24"
+      color={statusMap[props.status].color}
+      radius="medium"
+    >
+      <Flex justify="center">{statusMap[props.status].label}</Flex>
     </Badge>
   );
 };

@@ -68,7 +68,7 @@ const AssigneeSelect = ({ issue }: { issue: Issue }) => {
             {users.length > 0 ? (
               users.map((user) => (
                 <Select.Item key={user.id} value={user.id}>
-                  {`${user.name} (${user.email})`}
+                  {`${user.name}`}
                 </Select.Item>
               ))
             ) : (
@@ -94,5 +94,7 @@ const useGetUsers = () =>
     queryFn: () => axios.get("/api/users").then((res) => res.data),
     retry: 3,
   });
+
+export const dynamic = "force-dynamic";
 
 export default AssigneeSelect;

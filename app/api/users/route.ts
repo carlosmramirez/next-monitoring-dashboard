@@ -6,3 +6,5 @@ export async function GET(_request: NextRequest) {
 
   return NextResponse.json(users, { status: 200 });
 }
+
+export const dynamic = "force-dynamic";
